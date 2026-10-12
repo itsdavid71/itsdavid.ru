@@ -493,7 +493,7 @@ function notFound() {
     description: 'Такой страницы нет.',
     noindex: true,
     body: `
-<section class="page-head"><div class="container narrow"><p class="tag">error 404</p><h1 class="h1">Страница <em>не найдена</em></h1><p class="lead mono">GET ${'{'}url{'}'} → 404 Not Found. Похоже, ссылка устарела.</p>
+<section class="page-head"><div class="container narrow"><p class="tag">error 404</p><h1 class="h1">Страница <em>не найдена</em></h1><p class="lead mono">GET → 404 Not Found. Похоже, ссылка устарела.</p>
 <div class="hero-cta"><a class="btn btn-primary" href="/">cd ~ ${icons.arrow}</a><a class="btn btn-ghost" href="/uslugi/">Услуги</a></div></div></section>`,
     schema: [],
   };
