@@ -31,7 +31,7 @@
   // Кейсы на тач-устройствах: цвет проявляется, когда кейс в центре экрана
   if (matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
     const cio = new IntersectionObserver((entries) => entries.forEach((en) => en.target.classList.toggle('focus', en.isIntersecting)), { rootMargin: '-35% 0px -35% 0px' });
-    document.querySelectorAll('.case-row').forEach((el) => cio.observe(el));
+    document.querySelectorAll('.case-card').forEach((el) => cio.observe(el));
   }
 
   // Подсветка карточек за курсором

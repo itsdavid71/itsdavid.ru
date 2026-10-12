@@ -38,22 +38,20 @@ const serviceCard = (s, i, wide = false) => `
 
 const bento = () => `<div class="bento">${bentoOrder.map((slug, i) => serviceCard(services.find(s => s.slug === slug), i, bentoWide.includes(slug))).join('')}</div>`;
 
-const caseRow = (k) => `
-<a class="case-row" href="/portfolio/${k.slug}/" data-reveal>
-  <div class="browser"><div class="browser-in">
+const caseRow = (k, i = 0) => `
+<a class="case-card card" href="/portfolio/${k.slug}/" data-reveal style="--d:${i * 0.08}s">
+  <div class="thumb">
     <div class="browser-bar"><i></i><i></i><i></i><span>${k.url.replace('https://', '')}</span></div>
-    <img src="/assets/img/cases/${k.img}-800.webp" srcset="/assets/img/cases/${k.img}-800.webp 800w, /assets/img/cases/${k.img}.webp 1440w" sizes="(max-width: 900px) 100vw, 760px" alt="Сайт ${esc(k.title)}" width="1440" height="900" loading="lazy">
-  </div></div>
-  <div class="case-info">
-    <p class="case-type">${k.type}</p>
-    <h3>${k.title}</h3>
-    <p>${k.summary}</p>
-    <div class="tags">${k.tags.map(t => `<span>${t}</span>`).join('')}</div>
-    <span class="link">Смотреть кейс ${icons.arrow}</span>
+    <div class="thumb-img"><img src="/assets/img/cases/${k.img}-800.webp" alt="Сайт ${esc(k.title)}" width="800" height="500" loading="lazy"></div>
   </div>
+  <p class="case-type">${k.type}</p>
+  <h3>${k.title}</h3>
+  <p>${k.summary}</p>
+  <div class="tags">${k.tags.map(t => `<span>${t}</span>`).join('')}</div>
+  <span class="card-arrow">${icons.arrow}</span>
 </a>`;
 
-const caseRows = (list) => `<div class="case-rows">${list.map(caseRow).join('')}</div>`;
+const caseRows = (list) => `<div class="grid-3 case-grid">${list.map(caseRow).join('')}</div>`;
 
 const postCard = (p, i = 0) => `
 <a class="card post" href="/blog/${p.slug}/" data-reveal style="--d:${i * 0.08}s">
