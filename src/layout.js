@@ -20,7 +20,7 @@ export const icons = {
   check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
 };
 
-const logo = () => `<a class="logo" href="/" aria-label="${esc(site.name)} — на главную"><span class="logo-mark">&lt;/&gt;</span><span class="logo-txt">its<b>david</b><span class="cursor"></span></span></a>`;
+const logo = () => `<a class="logo" href="/" aria-label="itsdavid — ${esc(site.name)}, на главную"><span class="logo-mark">&lt;/&gt;</span><span class="logo-txt">its<b>david</b><span class="cursor"></span></span></a>`;
 
 // Ссылки с data-goal считаются целями в Метрике (см. main.js).
 export const contactButtons = (cls = '') => `
@@ -141,6 +141,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 ${site.yandexVerification ? `<meta name="yandex-verification" content="${site.yandexVerification}">` : ''}
 ${site.googleVerification ? `<meta name="google-site-verification" content="${site.googleVerification}">` : ''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/apple-touch-icon.png" type="image/png" sizes="180x180">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/manrope-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jbmono-lat.woff2" as="font" type="font/woff2" crossorigin>

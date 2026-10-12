@@ -35,7 +35,6 @@ writeFileSync(join(out, 'robots.txt'), `User-agent: *
 Allow: /
 Disallow: /404.html
 
-Host: ${site.url}
 Sitemap: ${site.url}/sitemap.xml
 `);
 

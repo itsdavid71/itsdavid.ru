@@ -6,7 +6,7 @@
 /* Акцентный цвет меняется здесь: --accent, --accent-rgb, --accent2 */
 :root{
   --bg:#07080a;--bg2:#0b0c0f;--surface:#101115;--surface2:#16171c;--line:#1f2127;--line2:#2c2e36;
-  --text:#ecebe8;--muted:#8f8e96;--dim:#5e5d66;
+  --text:#ecebe8;--muted:#8f8e96;--dim:#7f7e88;
   --accent:#ff7a3d;--accent-rgb:255,122,61;--accent2:#ffc35a;--accent2-rgb:255,195,90;--on-accent:#160800;
   --err:#ff5d6c;--warn:#ffc857;--ok:#5ee68f;
   --tg:#229ed9;--wa:#1fae55;
@@ -345,3 +345,5 @@ a.card:hover .card-arrow{background:var(--accent);color:var(--on-accent);border-
 @media (max-width:960px){.hero-grid{grid-template-columns:1fr;gap:48px}.term-body{min-height:0}}
 @media (max-width:620px){.container{padding:0 18px}.card,.bug{padding:24px}.form-body{padding:22px}.svc{min-height:0}.term-body{font-size:13px;padding:18px}.hero-cta .btn{flex:1 1 100%}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js [data-reveal]{opacity:1;transform:none}}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

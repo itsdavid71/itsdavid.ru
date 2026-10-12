@@ -42,7 +42,7 @@ const caseRow = (k) => `
 <a class="case-row" href="/portfolio/${k.slug}/" data-reveal>
   <div class="browser"><div class="browser-in">
     <div class="browser-bar"><i></i><i></i><i></i><span>${k.url.replace('https://', '')}</span></div>
-    <img src="/assets/img/cases/${k.img}.webp" alt="Сайт ${esc(k.title)}" width="1440" height="900" loading="lazy">
+    <img src="/assets/img/cases/${k.img}-800.webp" srcset="/assets/img/cases/${k.img}-800.webp 800w, /assets/img/cases/${k.img}.webp 1440w" sizes="(max-width: 900px) 100vw, 760px" alt="Сайт ${esc(k.title)}" width="1440" height="900" loading="lazy">
   </div></div>
   <div class="case-info">
     <p class="case-type">${k.type}</p>
@@ -244,7 +244,7 @@ ${leadForm()}`;
   return {
     path: '/',
     title: 'Веб-разработчик в Москве — сайты, боты, доработки | Давид',
-    description: `Частный веб-разработчик в Москве: лендинги, сайты на WordPress и Tilda, интернет-магазины, Telegram-боты, доработка сайтов от ${site.hourRate} ₽/час. Напрямую, без студийных наценок.`,
+    description: `Частный веб-разработчик в Москве: лендинги, сайты на WordPress и Tilda, магазины, Telegram-боты, доработка от ${site.hourRate} ₽/час. Без студийных наценок.`,
     body,
     schema: [business, faq.schema],
   };
@@ -259,7 +259,7 @@ function servicesIndex() {
     description: 'Разработка лендингов и сайтов, вёрстка, интернет-магазины, Telegram-боты, карточки для маркетплейсов, доработка, ускорение и поддержка сайтов. Цены и сроки.',
     body: `
 <section class="page-head"><div class="container">${bc.html}<p class="tag">services</p><h1 class="h1">Услуги</h1><p class="lead">От правки одной кнопки до интернет-магазина под ключ. Цены указаны «от» — точную стоимость назову после короткого обсуждения задачи.</p></div></section>
-<section class="section" style="padding-top:24px"><div class="container">${bento()}</div></section>
+<section class="section" style="padding-top:24px"><div class="container"><h2 class="sr-only">Все услуги</h2>${bento()}</div></section>
 ${leadForm('Не нашли свою <em>задачу?</em>', 'Напишите, что нужно сделать. Если это не мой профиль — честно скажу и посоветую, к кому обратиться.')}`,
     schema: [bc.schema],
   };
@@ -327,7 +327,7 @@ function prices() {
   return {
     path: '/ceny/',
     title: 'Цены на разработку и доработку сайтов в Москве — прайс 2026 | Давид',
-    description: `Прайс веб-разработчика: доработка сайта от ${site.hourRate} ₽/час, лендинг от 20 000 ₽, сайт на WordPress от 30 000 ₽, Telegram-бот от 10 000 ₽, карточки для маркетплейсов от 600 ₽.`,
+    description: `Прайс веб-разработчика: доработка от ${site.hourRate} ₽/час, лендинг от 20 000 ₽, сайт на WordPress от 30 000 ₽, Telegram-бот от 10 000 ₽, карточки WB от 600 ₽.`,
     body: `
 <section class="page-head"><div class="container">${bc.html}<p class="tag">pricing</p><h1 class="h1">Цены</h1><p class="lead">Средние цены рынка Москвы — без студийных наценок. Час работы — ${rub(site.hourRate)} ₽. Оценка задачи — бесплатно.</p></div></section>
 <section class="section" style="padding-top:24px"><div class="container">
@@ -355,7 +355,7 @@ function portfolio() {
     description: 'Примеры моих работ: сайты для образования и детского отдыха, интернет-магазин на WooCommerce, личные кабинеты. Ссылки на живые проекты.',
     body: `
 <section class="page-head"><div class="container">${bc.html}<p class="tag">portfolio</p><h1 class="h1">Работы</h1><p class="lead">Живые проекты, которые работают и приносят клиентам заявки и продажи.</p></div></section>
-<section class="section" style="padding-top:24px"><div class="container">${caseRows(cases)}</div></section>
+<section class="section" style="padding-top:24px"><div class="container"><h2 class="sr-only">Проекты</h2>${caseRows(cases)}</div></section>
 ${leadForm('Хотите <em>так же?</em>')}`,
     schema: [bc.schema],
   };
@@ -377,7 +377,7 @@ function casePage(k) {
 </div></section>
 <section class="section" style="padding-top:24px"><div class="container">
   <div class="case-shots" data-reveal>
-    <img src="/assets/img/cases/${k.img}.webp" alt="${esc(k.title)} — десктопная версия" width="1440" height="900">
+    <img src="/assets/img/cases/${k.img}.webp" srcset="/assets/img/cases/${k.img}-800.webp 800w, /assets/img/cases/${k.img}.webp 1440w" sizes="(max-width: 700px) 100vw, 1000px" alt="${esc(k.title)} — десктопная версия" width="1440" height="900">
     <img src="/assets/img/cases/${k.img}-m.webp" alt="${esc(k.title)} — мобильная версия" width="390" height="844" loading="lazy">
   </div>
 </div></section>
@@ -401,7 +401,7 @@ function blogIndex() {
     description: 'Простым языком о том, сколько стоит сайт, как ускорить WordPress, зачем бизнесу Telegram-бот, и о других вопросах, которые задают мне клиенты.',
     body: `
 <section class="page-head"><div class="container">${bc.html}<p class="tag">blog</p><h1 class="h1">Блог</h1><p class="lead">Отвечаю на вопросы, которые чаще всего задают клиенты, — простым языком и без воды.</p></div></section>
-<section class="section" style="padding-top:24px"><div class="container"><div class="grid-3">${posts.map(postCard).join('')}</div></div></section>`,
+<section class="section" style="padding-top:24px"><div class="container"><h2 class="sr-only">Статьи</h2><div class="grid-3">${posts.map(postCard).join('')}</div></div></section>`,
     schema: [bc.schema],
   };
 }
@@ -423,7 +423,7 @@ function postPage(p) {
   };
   return {
     path: `/blog/${p.slug}/`,
-    title: `${p.title} | Блог Давида`,
+    title: p.title.length > 52 ? p.title : `${p.title} | Блог Давида`,
     description: p.metaDesc,
     type: 'article',
     body: `
@@ -447,7 +447,7 @@ function contacts() {
     description: `Telegram @${c.telegram}, WhatsApp и телефон ${c.phone}, email ${c.email}. Отвечаю в течение часа в рабочее время.`,
     body: `
 <section class="page-head"><div class="container">${bc.html}<p class="tag">contact</p><h1 class="h1">Контакты</h1><p class="lead">Самый быстрый способ — Telegram или WhatsApp. Отвечаю в течение часа, ежедневно с 10:00 до 21:00.</p></div></section>
-<section class="section" style="padding-top:24px"><div class="container grid-3">
+<section class="section" style="padding-top:24px"><h2 class="sr-only">Способы связи</h2><div class="container grid-3">
   <a class="card" href="${links.tg}" target="_blank" rel="noopener" data-goal="click_tg" data-reveal><p class="svc-n">telegram</p><h3>@${c.telegram}</h3><span class="link">Написать ${icons.arrow}</span></a>
   <a class="card" href="${links.wa}" target="_blank" rel="noopener" data-goal="click_wa" data-reveal style="--d:.08s"><p class="svc-n">whatsapp</p><h3>${c.phone}</h3><span class="link">Написать ${icons.arrow}</span></a>
   <a class="card" href="${links.email}" data-goal="click_email" data-reveal style="--d:.16s"><p class="svc-n">email</p><h3>${c.email}</h3><span class="link">Написать ${icons.arrow}</span></a>
