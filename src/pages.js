@@ -100,7 +100,7 @@ function home() {
     <div>
       <p class="status"><span class="dot"></span>online · беру новые проекты</p>
       <h1 class="h1">Сайты и боты, которые <em>приносят заявки</em></h1>
-      <p class="lead">Я ${site.person} — веб-разработчик из Москвы. Делаю лендинги, сайты на WordPress и Tilda, интернет-магазины, Telegram-ботов и инфографику для маркетплейсов. Напрямую, без студийных наценок и «испорченного телефона».</p>
+      <p class="lead">Я ${site.person} — веб-разработчик из Москвы. Делаю лендинги, сайты на WordPress и Tilda, интернет-магазины, Telegram-ботов и инфографику для маркетплейсов. Напрямую, без студийных наценок и посредников.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg" href="#contact">Рассчитать стоимость ${icons.arrow}</a>
         <a class="btn btn-ghost btn-lg" href="#audit">Бесплатный разбор сайта</a>
@@ -118,7 +118,7 @@ function home() {
         <p data-line>&nbsp;</p>
         <p class="t-cmd" data-line data-type><span class="t-path">~/projects</span> david deploy --prod</p>
         <p class="t-dim" data-line>building... ██████████ 100%</p>
-        <p class="t-res" data-line>🚀 live: https://ваш-сайт.ru</p>
+        <p class="t-res" data-line>live: https://ваш-сайт.ru</p>
         <p class="t-cmd" data-line><span class="t-path">~/projects</span> <span class="caret"></span></p>
       </div>
     </div>
