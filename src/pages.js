@@ -364,7 +364,7 @@ function casePage(k) {
   const others = [...cases.filter(x => x.slug !== k.slug && x.service && x.service === k.service), ...cases.filter(x => x.slug !== k.slug && (!x.service || x.service !== k.service))].slice(0, 3);
   return {
     path: `/portfolio/${k.slug}/`,
-    title: `${k.title} — ${k.type.toLowerCase()} | Портфолио Давида`,
+    title: (() => { const t = `${k.title} — ${k.type[0].toLowerCase() + k.type.slice(1)}`; return t.length > 50 ? (t.length > 68 ? `${k.title} | Портфолио Давида` : t) : `${t} | Портфолио Давида`; })(),
     description: k.summary,
     ogImage: `/assets/img/cases/${k.img}.webp`,
     body: `
