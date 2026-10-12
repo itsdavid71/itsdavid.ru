@@ -374,3 +374,5 @@ a.card:hover .card-arrow{background:var(--accent);color:var(--on-accent);border-
 @media (max-width:900px){.gallery.g4{grid-template-columns:1fr 1fr}}
 .gallery.g2{grid-template-columns:1fr 1fr}
 @media (max-width:700px){.gallery.g2{grid-template-columns:1fr}}
+.about-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 62% 58% at 50% 42%,transparent 45%,rgba(7,8,10,.82) 100%),linear-gradient(transparent 55%,rgba(7,8,10,.55))}
+.about-photo img{filter:saturate(.9) contrast(1.05)}

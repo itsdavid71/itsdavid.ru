@@ -9,7 +9,7 @@ export const site = {
   city: 'Москва',
   experienceYears: 7, // TODO: поправь на свой реальный стаж
   hourRate: 1000,
-  photo: '', // положи фото в src/assets/img/ и укажи путь, например '/assets/img/david.jpg'
+  photo: '/assets/img/david.webp', // положи фото в src/assets/img/ и укажи путь, например '/assets/img/david.jpg'
 
   contacts: {
     telegram: 'itsdavid21',
