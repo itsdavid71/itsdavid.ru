@@ -160,7 +160,7 @@ function home() {
 <section class="section">
   <div class="container">
     <div class="section-head"><div><p class="tag">portfolio</p><h2 class="h2" data-reveal>Мои <em>проекты</em></h2></div><a class="link" href="/portfolio/">Все работы ${icons.arrow}</a></div>
-    ${caseRows(cases)}
+    ${caseRows([...cases.filter(k => !k.concept), ...['telegram-mini-app-kofejnya', 'remont-kalkulyator', 'infografika-wb-termokruzhka'].map(sl => cases.find(k => k.slug === sl))])}
   </div>
 </section>
 
@@ -352,7 +352,7 @@ function portfolio() {
     title: 'Портфолио веб-разработчика — примеры сайтов | Давид',
     description: 'Примеры работ: сайты для образования и детского отдыха, интернет-магазин на WooCommerce, лендинг с онлайн-записью, инфографика для WB, Telegram-бот.',
     body: `
-<section class="page-head"><div class="container">${bc.html}<p class="tag">portfolio</p><h1 class="h1">Работы</h1><p class="lead">Реальные проекты клиентов и концепты, которые показывают, как я решаю типовые задачи: лендинг с записью, инфографика для маркетплейсов, Telegram-бот.</p></div></section>
+<section class="page-head"><div class="container">${bc.html}<p class="tag">portfolio</p><h1 class="h1">Работы</h1><p class="lead">Реальные проекты клиентов и концепты, которые показывают, как я решаю типовые задачи: лендинги с записью и калькулятором, Telegram-боты и Mini Apps, инфографика для маркетплейсов, ускорение сайтов. Концепты можно открыть и потрогать вживую.</p></div></section>
 <section class="section" style="padding-top:24px"><div class="container"><h2 class="sr-only">Проекты</h2>${caseRows(cases)}</div></section>
 ${leadForm('Хотите <em>так же?</em>')}`,
     schema: [bc.schema],
@@ -361,7 +361,7 @@ ${leadForm('Хотите <em>так же?</em>')}`,
 
 function casePage(k) {
   const bc = breadcrumbs([['/portfolio/', 'Работы'], [`/portfolio/${k.slug}/`, k.title]]);
-  const others = cases.filter(x => x.slug !== k.slug);
+  const others = [...cases.filter(x => x.slug !== k.slug && x.service && x.service === k.service), ...cases.filter(x => x.slug !== k.slug && (!x.service || x.service !== k.service))].slice(0, 3);
   return {
     path: `/portfolio/${k.slug}/`,
     title: `${k.title} — ${k.type.toLowerCase()} | Портфолио Давида`,
