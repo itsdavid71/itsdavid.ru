@@ -372,3 +372,5 @@ a.card:hover .card-arrow{background:var(--accent);color:var(--on-accent);border-
 .gallery img{width:100%;border-radius:var(--radius);border:1px solid var(--line2)}
 .gallery.g4{grid-template-columns:repeat(4,1fr)}
 @media (max-width:900px){.gallery.g4{grid-template-columns:1fr 1fr}}
+.gallery.g2{grid-template-columns:1fr 1fr}
+@media (max-width:700px){.gallery.g2{grid-template-columns:1fr}}

@@ -160,7 +160,7 @@ function home() {
 <section class="section">
   <div class="container">
     <div class="section-head"><div><p class="tag">portfolio</p><h2 class="h2" data-reveal>Мои <em>проекты</em></h2></div><a class="link" href="/portfolio/">Все работы ${icons.arrow}</a></div>
-    ${caseRows([...cases.filter(k => !k.concept), ...['telegram-mini-app-kofejnya', 'remont-kalkulyator', 'infografika-wb-termokruzhka'].map(sl => cases.find(k => k.slug === sl))])}
+    ${caseRows([...cases.filter(k => !k.concept), ...['zhk-lumen', 'telegram-mini-app-kofejnya', 'infografika-wb-termokruzhka'].map(sl => cases.find(k => k.slug === sl))])}
   </div>
 </section>
 
@@ -375,7 +375,7 @@ function casePage(k) {
   ${k.url ? `<p><a class="btn btn-ghost" href="${k.url}" target="_blank" rel="noopener">${k.concept ? 'Открыть демо' : 'Открыть сайт'} ${icons.arrow}</a></p>` : ''}
 </div></section>
 <section class="section" style="padding-top:24px"><div class="container">
-  ${k.gallery ? `<div class="gallery g${k.gallery.length}" data-reveal>${k.gallery.map((g, i) => `<img src="${g}" alt="${esc(k.title)} — изображение ${i + 1}" loading="${i ? 'lazy' : 'eager'}">`).join('')}</div>` : `<div class="case-shots" data-reveal>
+  ${k.gallery ? `<div class="gallery g${k.galleryCols || k.gallery.length}" data-reveal>${k.gallery.map((g, i) => `<img src="${g}" alt="${esc(k.title)} — изображение ${i + 1}" loading="${i ? 'lazy' : 'eager'}">`).join('')}</div>` : `<div class="case-shots" data-reveal>
     <img src="/assets/img/cases/${k.img}.webp" srcset="/assets/img/cases/${k.img}-800.webp 800w, /assets/img/cases/${k.img}.webp 1440w" sizes="(max-width: 700px) 100vw, 1000px" alt="${esc(k.title)} — десктопная версия" width="1440" height="900">
     <img src="/assets/img/cases/${k.img}-m.webp" alt="${esc(k.title)} — мобильная версия" width="390" height="844" loading="lazy">
   </div>`}
