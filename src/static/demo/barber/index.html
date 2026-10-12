@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ОСТРО — барбершоп на Патриарших (концепт)</title>
+<meta name="description" content="Концепт-лендинг барбершопа с онлайн-записью. Демо-проект веб-разработчика Давида.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231e3a2f'/><text x='32' y='44' font-size='34' font-family='Arial' font-weight='900' fill='%23e8c48a' text-anchor='middle'>О</text></svg>">
+<style>
+@font-face{font-family:U;src:url(unbounded-cyr.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+0400-045F}
+@font-face{font-family:U;src:url(unbounded-lat.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+@font-face{font-family:M;src:url(/assets/fonts/manrope-cyr.woff2) format("woff2");font-weight:200 800;font-display:swap;unicode-range:U+0400-045F}
+@font-face{font-family:M;src:url(/assets/fonts/manrope-lat.woff2) format("woff2");font-weight:200 800;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+:root{--cream:#f3ede2;--paper:#faf7f1;--green:#1e3a2f;--green2:#2c5242;--brass:#c9974f;--brass-l:#e8c48a;--ink:#1b1a17;--muted:#6f6a60;--line:#e2d9c8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 M,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:U,M,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0 0 .5em}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:0;background:var(--green);color:var(--cream);font:700 16px M,sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--green2)}
+.btn-brass{background:var(--brass);color:var(--ink)}
+.btn-brass:hover{background:var(--brass-l)}
+.concept{background:var(--ink);color:#bdb6a8;font-size:13px;text-align:center;padding:8px 16px}
+.concept a{color:var(--brass-l)}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:900 26px U,sans-serif;letter-spacing:.06em;text-decoration:none;color:var(--green)}
+.logo span{color:var(--brass)}
+nav{display:flex;gap:32px;align-items:center}
+nav a{text-decoration:none;font-weight:600;font-size:15px}
+@media (max-width:800px){nav a:not(.btn){display:none}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:40px 0 90px}
+.hero>*{min-width:0}
+.art{width:100%}
+.hero h1{font-size:clamp(40px,6vw,88px);color:var(--green)}
+.hero h1 i{font-style:normal;color:var(--brass)}
+.hero p{font-size:20px;color:var(--muted);max-width:520px;margin-bottom:36px}
+.hero-meta{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap}
+.hero-meta b{display:block;font:700 28px U,sans-serif;color:var(--green)}
+.hero-meta span{font-size:14px;color:var(--muted)}
+.art{position:relative;aspect-ratio:4/5;border-radius:220px 220px 28px 28px;background:var(--green);overflow:hidden}
+.art::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 34px,rgba(232,196,138,.08) 34px 36px)}
+.pole{position:absolute;left:50%;top:14%;bottom:14%;width:84px;transform:translateX(-50%);border-radius:42px;background:repeating-linear-gradient(-35deg,var(--cream) 0 22px,#b4432f 22px 44px,var(--cream) 44px 66px,#2f5aa0 66px 88px);animation:pole 3s linear infinite;box-shadow:0 0 0 10px var(--brass),0 0 0 14px rgba(0,0,0,.2)}
+@keyframes pole{to{background-position:0 107.43px}}
+.art-tag{position:absolute;left:24px;bottom:24px;right:24px;background:var(--paper);border-radius:18px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.art-tag small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.art{max-width:420px}}
+section{padding:90px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sec-h h2{font-size:clamp(32px,4.4vw,58px);color:var(--green);margin:0}
+.sec-h p{color:var(--muted);max-width:420px;margin:0}
+.price{background:var(--paper);border-radius:28px;padding:12px 36px}
+.price-row{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px dashed var(--line)}
+.price-row:last-child{border:0}
+.price-row h3{font-size:19px;margin:0 0 4px}
+.price-row p{margin:0;color:var(--muted);font-size:15px}
+.price-row .t{color:var(--muted);font-size:14px;white-space:nowrap}
+.price-row b{font:700 22px U,sans-serif;color:var(--green);white-space:nowrap}
+@media (max-width:640px){.price{padding:6px 20px}.price-row{grid-template-columns:1fr auto}.price-row .t{display:none}}
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.masters{grid-template-columns:1fr}}
+.master{background:var(--paper);border-radius:28px;padding:18px 18px 26px}
+.ava{aspect-ratio:1;border-radius:20px;display:grid;place-items:center;font:900 96px U,sans-serif;color:var(--brass-l);margin-bottom:20px;background:var(--green)}
+.master:nth-child(2) .ava{background:#3b2c22}
+.master:nth-child(3) .ava{background:#26303d}
+.master h3{font-size:22px;margin:0 6px 6px}
+.master p{margin:0 6px;color:var(--muted);font-size:15px}
+.booking{background:var(--green);color:var(--cream);border-radius:36px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.booking h2{font-size:clamp(32px,4vw,52px);color:var(--cream)}
+.booking>div>p{color:#b9c7bf}
+@media (max-width:900px){.booking{grid-template-columns:1fr}}
+.step{margin-bottom:26px}
+.step-l{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--brass-l);font-weight:700;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(243,237,226,.25);background:transparent;color:var(--cream);border-radius:999px;padding:10px 16px;font:600 15px M,sans-serif;cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--brass-l)}
+.chip[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid rgba(243,237,226,.15)}
+.summary p{margin:0;color:#d7e0da}
+.summary b{color:var(--brass-l)}
+.where{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.map{border-radius:28px;min-height:340px;background:#dfe4d8;position:relative;overflow:hidden}
+.map::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 48%,#fff 48% 52%,transparent 52%),linear-gradient(0deg,transparent 30%,#fff 30% 33%,transparent 33%),linear-gradient(20deg,transparent 60%,#fff 60% 62%,transparent 62%),radial-gradient(circle at 70% 25%,#b9d0a8 0 60px,transparent 61px)}
+.pin{position:absolute;left:50%;top:31%;transform:translate(-50%,-100%);background:var(--green);color:var(--cream);padding:10px 16px;border-radius:14px;font-weight:700;font-size:14px;white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--green);border-bottom:0}
+.info{background:var(--paper);border-radius:28px;padding:36px}
+.info dl{margin:0;display:grid;gap:18px}
+.info dt{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.info dd{margin:2px 0 0;font-weight:700;font-size:19px}
+@media (max-width:800px){.where{grid-template-columns:1fr}}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.modal{position:fixed;inset:0;background:rgba(27,26,23,.6);display:grid;place-items:center;padding:20px;z-index:10}
+.modal[hidden]{display:none}
+.modal-in{background:var(--paper);border-radius:28px;padding:40px;max-width:440px;text-align:center}
+.modal-in h3{font-size:26px;color:var(--green)}
+.modal-in p{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="concept">Концепт-проект: бренд и данные вымышлены. Разработка — <a href="/">Давид, веб-разработчик</a></div>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">ОСТР<span>О</span></a>
+    <nav><a href="#prices">Цены</a><a href="#masters">Мастера</a><a href="#where">Контакты</a><a class="btn" href="#book">Записаться</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Стрижка, <i>после которой</i> хочется в зеркало</h1>
+      <p>Мужские стрижки и бритьё опасной бритвой на Патриарших. Запишитесь онлайн за 30 секунд — без звонков и ожидания.</p>
+      <a class="btn btn-brass" href="#book">Выбрать время →</a>
+      <div class="hero-meta">
+        <div><b>4.9</b><span>рейтинг на картах</span></div>
+        <div><b>45 мин</b><span>средняя стрижка</span></div>
+        <div><b>10–22</b><span>без выходных</span></div>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true"><div class="pole"></div><div class="art-tag"><span>Ближайшее окно<small>сегодня</small></span><span id="nearest">18:30</span></div></div>
+  </div>
+</div>
+
+<section id="prices"><div class="wrap">
+  <div class="sec-h"><h2>Услуги и цены</h2><p>Цены фиксированные. Кофе, чай и что-нибудь покрепче — за счёт заведения.</p></div>
+  <div class="price">
+    <div class="price-row"><div><h3>Мужская стрижка</h3><p>Консультация, мытьё, укладка</p></div><span class="t">60 мин</span><b>2 500 ₽</b></div>
+    <div class="price-row"><div><h3>Стрижка машинкой</h3><p>Одна насадка, окантовка</p></div><span class="t">30 мин</span><b>1 400 ₽</b></div>
+    <div class="price-row"><div><h3>Моделирование бороды</h3><p>Форма, контур, горячее полотенце</p></div><span class="t">40 мин</span><b>1 800 ₽</b></div>
+    <div class="price-row"><div><h3>Королевское бритьё</h3><p>Опасная бритва, распаривание, уход</p></div><span class="t">45 мин</span><b>2 200 ₽</b></div>
+    <div class="price-row"><div><h3>Стрижка + борода</h3><p>Комплекс со скидкой</p></div><span class="t">90 мин</span><b>3 800 ₽</b></div>
+  </div>
+</div></section>
+
+<section id="masters" style="padding-top:0"><div class="wrap">
+  <div class="sec-h"><h2>Мастера</h2><p>Каждый — с опытом от 5 лет. Выберите любимого или доверьтесь первому свободному.</p></div>
+  <div class="masters">
+    <div class="master"><div class="ava">А</div><h3>Артём</h3><p>Топ-барбер · классика и фейды</p></div>
+    <div class="master"><div class="ava">М</div><h3>Марк</h3><p>Барбер · бороды и бритьё</p></div>
+    <div class="master"><div class="ava">Л</div><h3>Лев</h3><p>Барбер · текстурные стрижки</p></div>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <div class="booking">
+    <div>
+      <h2>Онлайн-запись</h2>
+      <p>Выберите услугу, мастера и время. Подтверждение придёт в Telegram, а за 2 часа до визита — напоминание.</p>
+    </div>
+    <form id="bk">
+      <div class="step"><div class="step-l">01 · Услуга</div><div class="chips" data-group="service">
+        <button type="button" class="chip" data-v="Мужская стрижка" aria-pressed="true">Стрижка</button>
+        <button type="button" class="chip" data-v="Стрижка машинкой" aria-pressed="false">Машинка</button>
+        <button type="button" class="chip" data-v="Моделирование бороды" aria-pressed="false">Борода</button>
+        <button type="button" class="chip" data-v="Королевское бритьё" aria-pressed="false">Бритьё</button>
+        <button type="button" class="chip" data-v="Стрижка + борода" aria-pressed="false">Стрижка + борода</button>
+      </div></div>
+      <div class="step"><div class="step-l">02 · Мастер</div><div class="chips" data-group="master">
+        <button type="button" class="chip" data-v="Любой мастер" aria-pressed="true">Любой</button>
+        <button type="button" class="chip" data-v="Артём" aria-pressed="false">Артём</button>
+        <button type="button" class="chip" data-v="Марк" aria-pressed="false">Марк</button>
+        <button type="button" class="chip" data-v="Лев" aria-pressed="false">Лев</button>
+      </div></div>
+      <div class="step"><div class="step-l">03 · День</div><div class="chips" data-group="day" id="days"></div></div>
+      <div class="step"><div class="step-l">04 · Время</div><div class="chips" data-group="time" id="times"></div></div>
+      <div class="summary"><p id="sum"></p><button class="btn btn-brass" type="submit">Записаться</button></div>
+    </form>
+  </div>
+</div></section>
+
+<section id="where" style="padding-top:0"><div class="wrap">
+  <div class="sec-h"><h2>Как найти</h2></div>
+  <div class="where">
+    <div class="map" aria-hidden="true"><div class="pin">ОСТРО</div></div>
+    <div class="info"><dl>
+      <div><dt>Адрес</dt><dd>Москва, Малая Бронная, 00 (вымышленный)</dd></div>
+      <div><dt>Часы работы</dt><dd>Ежедневно 10:00–22:00</dd></div>
+      <div><dt>Телефон</dt><dd>+7 (000) 000-00-00</dd></div>
+      <div><dt>Метро</dt><dd>Пушкинская, 7 минут пешком</dd></div>
+    </dl></div>
+  </div>
+</div></section>
+
+<div class="wrap"><footer><span>© ОСТРО — концепт-проект</span><span>Сайт сделал <a href="/">Давид · itsdavid.ru</a></span></footer></div>
+
+<div class="modal" id="ok" hidden><div class="modal-in"><h3>Вы записаны!</h3><p id="okText"></p><p style="font-size:14px">Это демо: запись никуда не отправлена. В реальном проекте она уходит в CRM и Telegram мастеру.</p><button class="btn" type="button" onclick="document.getElementById('ok').hidden=true">Отлично</button></div></div>
+
+<script>
+(() => {
+  const days = document.getElementById('days'), times = document.getElementById('times');
+  const wd = ['вс','пн','вт','ср','чт','пт','сб'];
+  const now = new Date();
+  for (let i = 0; i < 6; i++) {
+    const d = new Date(now); d.setDate(now.getDate() + i);
+    const label = i === 0 ? 'Сегодня' : i === 1 ? 'Завтра' : `${wd[d.getDay()]}, ${d.getDate()}`;
+    days.insertAdjacentHTML('beforeend', `<button type="button" class="chip" data-v="${label}" data-i="${i}" aria-pressed="${i === 0}">${label}</button>`);
+  }
+  // Псевдослучайная занятость, стабильная для дня
+  const busy = (dayIdx, h) => ((dayIdx * 7 + h * 13) % 5) === 0;
+  const renderTimes = () => {
+    const di = +days.querySelector('[aria-pressed=true]').dataset.i;
+    const startH = di === 0 ? Math.max(10, now.getHours() + 1) : 10;
+    times.innerHTML = '';
+    for (let h = 10; h < 22; h++) for (const m of ['00', '30']) {
+      if (h === 21 && m === '30') continue;
+      const dis = h < startH || busy(di, h + (m === '30' ? .5 : 0));
+      times.insertAdjacentHTML('beforeend', `<button type="button" class="chip" data-v="${h}:${m}" aria-pressed="false"${dis ? ' disabled' : ''}>${h}:${m}</button>`);
+    }
+    const first = times.querySelector('.chip:not(:disabled)');
+    if (first) first.setAttribute('aria-pressed', 'true');
+    if (di === 0) document.getElementById('nearest').textContent = first ? first.dataset.v : 'завтра';
+    sum();
+  };
+  const val = (g) => document.querySelector(`[data-group=${g}] [aria-pressed=true]`)?.dataset.v || '—';
+  const sum = () => { document.getElementById('sum').innerHTML = `<b>${val('service')}</b> · ${val('master')} · ${val('day')}, ${val('time')}`; };
+  document.getElementById('bk').addEventListener('click', (e) => {
+    const c = e.target.closest('.chip'); if (!c || c.disabled) return;
+    c.parentElement.querySelectorAll('.chip').forEach((x) => x.setAttribute('aria-pressed', x === c));
+    if (c.parentElement.id === 'days') renderTimes(); else sum();
+  });
+  document.getElementById('bk').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('okText').textContent = `${val('service')}, ${val('master').toLowerCase()}, ${val('day').toLowerCase()} в ${val('time')}.`;
+    document.getElementById('ok').hidden = false;
+  });
+  renderTimes();
+})();
+</script>
+</body>
+</html>

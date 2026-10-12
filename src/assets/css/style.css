@@ -365,3 +365,10 @@ a.card:hover .card-arrow{background:var(--accent);color:var(--on-accent);border-
 .case-card:hover .thumb-img::after,.case-card.focus .thumb-img::after{opacity:0}
 .case-card .case-type{margin-bottom:8px;font-size:13px}
 .case-card>p:not(.case-type){font-size:15.5px}
+
+.concept-badge{position:absolute;z-index:2;top:12px;left:12px;font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:5px 9px;border-radius:7px;background:rgba(7,8,10,.8);border:1px solid var(--line2);color:var(--accent2)}
+.concept-note{font:500 14px var(--mono);color:var(--accent2);margin:4px 0 20px}
+.gallery{display:grid;gap:20px}
+.gallery img{width:100%;border-radius:var(--radius);border:1px solid var(--line2)}
+.gallery.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.gallery.g4{grid-template-columns:1fr 1fr}}

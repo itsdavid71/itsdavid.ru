@@ -41,8 +41,8 @@ const bento = () => `<div class="bento">${bentoOrder.map((slug, i) => serviceCar
 const caseRow = (k, i = 0) => `
 <a class="case-card card" href="/portfolio/${k.slug}/" data-reveal style="--d:${i * 0.08}s">
   <div class="thumb">
-    <div class="browser-bar"><i></i><i></i><i></i><span>${k.url.replace('https://', '')}</span></div>
-    <div class="thumb-img"><img src="/assets/img/cases/${k.img}-800.webp" alt="Сайт ${esc(k.title)}" width="800" height="500" loading="lazy"></div>
+    <div class="browser-bar"><i></i><i></i><i></i><span>${k.url ? k.url.replace(/^https?:\/\//, '').replace(/^\//, 'itsdavid.ru/') : 'концепт'}</span></div>
+    <div class="thumb-img">${k.concept ? '<span class="concept-badge">Концепт</span>' : ''}<img style="object-position:${k.pos || 'top'}" src="/assets/img/cases/${k.img}-800.webp" alt="Сайт ${esc(k.title)}" width="800" height="500" loading="lazy"></div>
   </div>
   <p class="case-type">${k.type}</p>
   <h3>${k.title}</h3>
@@ -159,7 +159,7 @@ function home() {
 
 <section class="section">
   <div class="container">
-    <div class="section-head"><div><p class="tag">portfolio</p><h2 class="h2" data-reveal>Живые <em>проекты</em></h2></div><a class="link" href="/portfolio/">Все работы ${icons.arrow}</a></div>
+    <div class="section-head"><div><p class="tag">portfolio</p><h2 class="h2" data-reveal>Мои <em>проекты</em></h2></div><a class="link" href="/portfolio/">Все работы ${icons.arrow}</a></div>
     ${caseRows(cases)}
   </div>
 </section>
@@ -304,7 +304,7 @@ function servicePage(s) {
 <section class="section alt"><div class="container"><p class="tag">workflow</p><h2 class="h2" data-reveal style="margin-bottom:56px">Как <em>работаем</em></h2>${steps(s.steps)}<div style="margin-top:64px">${guarantees()}</div></div></section>
 <section class="section"><div class="container">
   <div class="section-head"><div><p class="tag">portfolio</p><h2 class="h2" data-reveal>Примеры <em>работ</em></h2></div><a class="link" href="/portfolio/">Все работы ${icons.arrow}</a></div>
-  ${caseRows(cases.slice(0, 2))}
+  ${caseRows([...cases.filter(k => k.service === s.slug), ...cases.filter(k => k.service !== s.slug && !k.concept)].slice(0, 3))}
 </div></section>
 ${faq.html}
 ${relatedPosts.length ? `<section class="section alt"><div class="container"><p class="tag">blog</p><h2 class="h2" data-reveal>Статьи по <em>теме</em></h2><div class="grid-3" style="margin-top:40px">${relatedPosts.map(postCard).join('')}</div></div></section>` : ''}
@@ -350,9 +350,9 @@ function portfolio() {
   return {
     path: '/portfolio/',
     title: 'Портфолио веб-разработчика — примеры сайтов | Давид',
-    description: 'Примеры моих работ: сайты для образования и детского отдыха, интернет-магазин на WooCommerce, личные кабинеты. Ссылки на живые проекты.',
+    description: 'Примеры работ: сайты для образования и детского отдыха, интернет-магазин на WooCommerce, лендинг с онлайн-записью, инфографика для WB, Telegram-бот.',
     body: `
-<section class="page-head"><div class="container">${bc.html}<p class="tag">portfolio</p><h1 class="h1">Работы</h1><p class="lead">Живые проекты, которые работают и приносят клиентам заявки и продажи.</p></div></section>
+<section class="page-head"><div class="container">${bc.html}<p class="tag">portfolio</p><h1 class="h1">Работы</h1><p class="lead">Реальные проекты клиентов и концепты, которые показывают, как я решаю типовые задачи: лендинг с записью, инфографика для маркетплейсов, Telegram-бот.</p></div></section>
 <section class="section" style="padding-top:24px"><div class="container"><h2 class="sr-only">Проекты</h2>${caseRows(cases)}</div></section>
 ${leadForm('Хотите <em>так же?</em>')}`,
     schema: [bc.schema],
@@ -371,13 +371,14 @@ function casePage(k) {
 <section class="page-head"><div class="container">${bc.html}
   <p class="tag">${k.type.toLowerCase()}</p><h1 class="h1">${k.title}</h1><p class="lead">${k.summary}</p>
   <div class="tags">${k.tags.map(t => `<span>${t}</span>`).join('')}</div>
-  <p><a class="btn btn-ghost" href="${k.url}" target="_blank" rel="noopener">Открыть сайт ${icons.arrow}</a></p>
+  ${k.concept ? `<p class="concept-note">Концепт-проект: бренд и данные вымышлены. Показывает, как я решаю такие задачи.</p>` : ''}
+  ${k.url ? `<p><a class="btn btn-ghost" href="${k.url}" target="_blank" rel="noopener">${k.concept ? 'Открыть демо' : 'Открыть сайт'} ${icons.arrow}</a></p>` : ''}
 </div></section>
 <section class="section" style="padding-top:24px"><div class="container">
-  <div class="case-shots" data-reveal>
+  ${k.gallery ? `<div class="gallery g${k.gallery.length}" data-reveal>${k.gallery.map((g, i) => `<img src="${g}" alt="${esc(k.title)} — изображение ${i + 1}" loading="${i ? 'lazy' : 'eager'}">`).join('')}</div>` : `<div class="case-shots" data-reveal>
     <img src="/assets/img/cases/${k.img}.webp" srcset="/assets/img/cases/${k.img}-800.webp 800w, /assets/img/cases/${k.img}.webp 1440w" sizes="(max-width: 700px) 100vw, 1000px" alt="${esc(k.title)} — десктопная версия" width="1440" height="900">
     <img src="/assets/img/cases/${k.img}-m.webp" alt="${esc(k.title)} — мобильная версия" width="390" height="844" loading="lazy">
-  </div>
+  </div>`}
 </div></section>
 <section class="section" style="padding-top:0"><div class="container narrow">
   <p class="tag">task</p><h2 class="h2">Задача</h2><p class="lead">${k.task}</p>
