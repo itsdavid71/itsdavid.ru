@@ -17,8 +17,10 @@ export const icons = {
   phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>',
   mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>',
-  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
 };
+
+const logo = () => `<a class="logo" href="/" aria-label="${esc(site.name)} — на главную"><span class="logo-mark">&lt;/&gt;</span><span class="logo-txt">its<b>david</b><span class="cursor"></span></span></a>`;
 
 // Ссылки с data-goal считаются целями в Метрике (см. main.js).
 export const contactButtons = (cls = '') => `
@@ -27,10 +29,11 @@ export const contactButtons = (cls = '') => `
   <a class="btn btn-wa" href="${links.wa}" target="_blank" rel="noopener" data-goal="click_wa">${icons.wa}<span>WhatsApp</span></a>
 </div>`;
 
-export const leadForm = (title = 'Обсудим ваш проект?', sub = 'Опишите задачу — отвечу в течение часа в рабочее время и назову цену и сроки. Бесплатно и без обязательств.') => `
+export const leadForm = (title = 'Обсудим ваш <em>проект?</em>', sub = 'Опишите задачу — отвечу в течение часа в рабочее время и назову цену и сроки. Бесплатно и без обязательств.') => `
 <section class="section cta" id="contact">
   <div class="container cta-grid">
-    <div>
+    <div data-reveal>
+      <p class="tag">contact</p>
       <h2 class="h2">${title}</h2>
       <p class="lead">${sub}</p>
       <p class="muted">Быстрее всего — написать в мессенджер:</p>
@@ -40,14 +43,17 @@ export const leadForm = (title = 'Обсудим ваш проект?', sub = '�
         <a href="${links.email}" data-goal="click_email">${icons.mail}${c.email}</a>
       </p>
     </div>
-    <form class="form" data-lead-form novalidate>
-      <label class="field"><span>Как к вам обращаться</span><input name="name" autocomplete="name" required></label>
-      <label class="field"><span>Telegram, WhatsApp или телефон</span><input name="contact" required placeholder="@username или +7…"></label>
-      <label class="field"><span>Что нужно сделать</span><textarea name="message" rows="4" placeholder="Например: лендинг для салона, ссылка на пример…"></textarea></label>
-      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="check"><input type="checkbox" name="agree" required checked><span>Согласен на <a href="/privacy/">обработку персональных данных</a></span></label>
-      <button class="btn btn-primary btn-lg" type="submit">Отправить заявку</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
+    <form class="form" data-lead-form novalidate data-reveal style="--d:.15s">
+      <div class="term-top"><i></i><i></i><i></i><span>new-project.sh</span></div>
+      <div class="form-body">
+        <label class="field"><span>Как к вам обращаться</span><input name="name" autocomplete="name" required placeholder="Имя"></label>
+        <label class="field"><span>Telegram, WhatsApp или телефон</span><input name="contact" required placeholder="@username или +7…"></label>
+        <label class="field"><span>Что нужно сделать</span><textarea name="message" rows="4" placeholder="Например: лендинг для салона, ссылка на пример…"></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" name="agree" required checked><span>Согласен на <a href="/privacy/">обработку персональных данных</a></span></label>
+        <button class="btn btn-primary btn-lg" type="submit">Отправить заявку ${icons.arrow}</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </div>
     </form>
   </div>
 </section>`;
@@ -63,7 +69,7 @@ const nav = [
 const header = (path) => `
 <header class="header">
   <div class="container header-in">
-    <a class="logo" href="/" aria-label="${esc(site.name)} — на главную"><span class="logo-mark">Д</span><span class="logo-txt">${site.person}<small>веб-разработчик</small></span></a>
+    ${logo()}
     <nav class="nav" id="nav" aria-label="Главное меню">
       ${nav.map(([h, t]) => `<a href="${h}"${path.startsWith(h) ? ' aria-current="page"' : ''}>${t}</a>`).join('')}
       <a class="btn btn-primary nav-cta" href="${links.tg}" target="_blank" rel="noopener" data-goal="click_tg">${icons.tg}Написать</a>
@@ -74,30 +80,33 @@ const header = (path) => `
 
 const footer = () => `
 <footer class="footer">
-  <div class="container footer-grid">
-    <div>
-      <a class="logo" href="/"><span class="logo-mark">Д</span><span class="logo-txt">${site.person}<small>веб-разработчик</small></span></a>
-      <p class="muted">Сайты, боты и доработки для малого бизнеса. ${site.city} и удалённо по всей России.</p>
-      ${contactButtons('sm')}
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        ${logo()}
+        <p>Сайты, боты и доработки для малого бизнеса. ${site.city} и удалённо по всей России.</p>
+        ${contactButtons('sm')}
+      </div>
+      <div>
+        <p class="footer-h">Разработка</p>
+        ${services.filter(s => ['dev', 'bots', 'design'].includes(s.group)).map(s => `<a href="/uslugi/${s.slug}/">${s.name}</a>`).join('')}
+      </div>
+      <div>
+        <p class="footer-h">Доработка и поддержка</p>
+        ${services.filter(s => s.group === 'support').map(s => `<a href="/uslugi/${s.slug}/">${s.name}</a>`).join('')}
+      </div>
+      <div>
+        <p class="footer-h">Контакты</p>
+        <a href="${links.phone}" data-goal="click_phone">${c.phone}</a>
+        <a href="${links.email}" data-goal="click_email">${c.email}</a>
+        <a href="${links.tg}" target="_blank" rel="noopener" data-goal="click_tg">@${c.telegram}</a>
+        <a href="${c.github}" target="_blank" rel="noopener">GitHub</a>
+        <a href="/privacy/">Политика конфиденциальности</a>
+      </div>
     </div>
-    <div>
-      <p class="footer-h">Разработка</p>
-      ${services.filter(s => ['dev', 'bots', 'design'].includes(s.group)).map(s => `<a href="/uslugi/${s.slug}/">${s.name}</a>`).join('')}
-    </div>
-    <div>
-      <p class="footer-h">Доработка и поддержка</p>
-      ${services.filter(s => s.group === 'support').map(s => `<a href="/uslugi/${s.slug}/">${s.name}</a>`).join('')}
-    </div>
-    <div>
-      <p class="footer-h">Контакты</p>
-      <a href="${links.phone}" data-goal="click_phone">${c.phone}</a>
-      <a href="${links.email}" data-goal="click_email">${c.email}</a>
-      <a href="${links.tg}" target="_blank" rel="noopener" data-goal="click_tg">@${c.telegram}</a>
-      <a href="${c.github}" target="_blank" rel="noopener">GitHub</a>
-      <a href="/privacy/">Политика конфиденциальности</a>
-    </div>
+    <p class="footer-big" aria-hidden="true">itsdavid.ru</p>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} ${site.person}, веб-разработчик · ${site.city}</span><span>сделано руками, без конструкторов</span></div>
   </div>
-  <div class="container footer-bottom muted">© ${new Date().getFullYear()} ${site.person}, веб-разработчик · ${site.city}</div>
 </footer>
 <div class="cookie" hidden><p>Сайт использует cookie и Яндекс.Метрику для анализа посещаемости. <a href="/privacy/">Подробнее</a></p><button class="btn btn-sm" type="button">Понятно</button></div>
 <a class="float-tg" href="${links.tg}" target="_blank" rel="noopener" data-goal="click_tg" aria-label="Написать в Telegram">${icons.tg}</a>`;
@@ -105,6 +114,8 @@ const footer = () => `
 const metrika = () => site.yandexMetrikaId ? `
 <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(${site.yandexMetrikaId},"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/${site.yandexMetrikaId}" style="position:absolute;left:-9999px" alt=""></div></noscript>` : '';
+
+export const BUILD_ID = Date.now().toString(36);
 
 export function layout({ path, title, description, body, schema = [], ogImage = '/assets/img/og.png', type = 'website', noindex = false }) {
   const url = site.url + path;
@@ -126,13 +137,15 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${site.url}${ogImage}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#14141a">
+<meta name="theme-color" content="#07080a">
 ${site.yandexVerification ? `<meta name="yandex-verification" content="${site.yandexVerification}">` : ''}
 ${site.googleVerification ? `<meta name="google-site-verification" content="${site.googleVerification}">` : ''}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/manrope-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jbmono-lat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css?v=${BUILD_ID}">
+<script>document.documentElement.classList.add('js')</script>
 ${ld}
 </head>
 <body>
@@ -141,17 +154,15 @@ ${header(path)}
 ${body}
 </main>
 ${footer()}
-<script>window.SITE={form:${JSON.stringify(site.formEndpoint)},ym:${JSON.stringify(site.yandexMetrikaId)}};</script>
+<script>window.SITE={form:${JSON.stringify(site.formEndpoint)},ym:${JSON.stringify(site.yandexMetrikaId)},tg:${JSON.stringify(links.tg)}};</script>
 <script src="/assets/js/main.js?v=${BUILD_ID}" defer></script>
 ${metrika()}
 </body>
 </html>`;
 }
 
-export const BUILD_ID = Date.now().toString(36);
-
 export const breadcrumbs = (items) => ({
-  html: `<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a>${items.map(([h, t], i) => i === items.length - 1 ? `<span>${esc(t)}</span>` : `<a href="${h}">${esc(t)}</a>`).join('')}</nav>`,
+  html: `<nav class="crumbs" aria-label="Хлебные крошки"><a href="/">~</a>${items.map(([h, t], i) => i === items.length - 1 ? `<span>${esc(t)}</span>` : `<a href="${h}">${esc(t)}</a>`).join('')}</nav>`,
   schema: {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -159,8 +170,8 @@ export const breadcrumbs = (items) => ({
   },
 });
 
-export const faqBlock = (faq, title = 'Частые вопросы') => ({
-  html: `<section class="section"><div class="container narrow"><h2 class="h2">${title}</h2><div class="faq">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>`,
+export const faqBlock = (faq, title = 'Частые <em>вопросы</em>') => ({
+  html: `<section class="section"><div class="container narrow"><p class="tag">faq</p><h2 class="h2" data-reveal>${title}</h2><div class="faq" data-reveal>${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>`,
   schema: {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
