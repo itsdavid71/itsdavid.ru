@@ -429,7 +429,7 @@ function postPage(p) {
 <article>
 <section class="page-head"><div class="container narrow">${bc.html}<h1 class="h1" style="font-size:clamp(34px,4.6vw,60px)">${p.title}</h1><p class="muted mono" style="font-size:14px">${site.person}, веб-разработчик · <time datetime="${p.date}">${new Date(p.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p></div></section>
 <section class="section" style="padding-top:24px"><div class="container narrow prose">${p.body}
-${s ? `<aside class="post-cta"><p><b>${s.name}</b> — ${s.short}</p><a class="btn btn-primary" href="/uslugi/${s.slug}/">Подробнее и цены ${icons.arrow}</a></aside>` : ''}
+${s ? `<aside class="post-cta"><p><b>${s.name}</b> — ${s.short[0].toLowerCase() + s.short.slice(1)}</p><a class="btn btn-primary" href="/uslugi/${s.slug}/">Подробнее и цены ${icons.arrow}</a></aside>` : ''}
 </div></section>
 </article>
 ${leadForm()}`,
