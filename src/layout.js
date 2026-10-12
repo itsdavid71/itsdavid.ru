@@ -105,7 +105,7 @@ const footer = () => `
       </div>
     </div>
     <p class="footer-big" aria-hidden="true">itsdavid.ru</p>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} ${site.person}, веб-разработчик · ${site.city}</span><span>сделано руками, без конструкторов</span></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} ${site.person}, веб-разработчик · ${site.city}</span></div>
   </div>
 </footer>
 <div class="cookie" hidden><p>Сайт использует cookie и Яндекс.Метрику для анализа посещаемости. <a href="/privacy/">Подробнее</a></p><button class="btn btn-sm" type="button">Понятно</button></div>
